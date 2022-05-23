@@ -3,14 +3,30 @@
     <head>
         <meta charset="utf-8">
         <title>Rock Paper Scissors</title>
-        <script src="./rps.js" defer></script>
+        <script src="./rps1.js" defer></script>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com"> 
     </head>
     <body>
-        <h1>Rock Paper Scissors Game</h1>
-        <button id="1" class="rock">Rock</button>
-        <button id="2" class="paper">Paper</button>
-        <button id="3" class="scissors">Scissors</button>
-        <div id="playerScore"> Player Score: 0 </div>
-        <div id="computerScore">Computer Score: 0 </div>
+        <div id="header">Rock Paper Scissors!</div>
+        <div class="container">
+        <div id="score">
+            <div class="playerScore">Player Score: 0 </div> <span id="span"> - </span> 
+            <div class="computerScore"> Computer Score: 0 </div>
+        </div>
+        </div>
+        <div id="result"> <span class="playerChoice"> </span> vs <span class="computerChoice"> </span> </div>
+        <div id="weapon">Choose your weapon:</div>
+        <div id="choice">
+            <div id="rock"> <img class="rock" src="./images/icon-rock.svg"> </div>
+            <div id="paper"> <img class="paper" src="./images/icon-paper.svg"> </div>
+            <div id="scissors"> <img class="scissors" src="./images/icon-scissors.svg"> </div>
+        </div>
+        <div id="final"> </div>
+        <div id="conclusion"></div>
+        <div id="container2"> 
+            <div class="playAgain">
+            </div>
+        </div>
     </body>
 </html>

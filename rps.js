@@ -3,68 +3,7 @@ let paper = 'paper';
 let scissors = 'scissors';
 let playerWin = 0;
 let computerWin = 0;
-let tie = 0;
 
-//button1 chose Rock => when click, run Playround with userPlay() is rock, computerPlay is unknown
-
-function checkWinner() {
-    for (i = 0; i < 6; i++) {
-        if (playerWin == 5) {
-        alert('The Winner is Player!')
-        return
-        } else if (computerWin == 5) {
-        alert ('The Winner is Computer')
-        return
-        }
-    }
-}
-
-
-const buttons = document.querySelectorAll('button');
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        playerSelection = button.className;
-    });
-    button.addEventListener('click', playRound);
-    button.addEventListener('click', checkPScore);
-    button.addEventListener('click', checkCScore);
-    window.addEventListener('click', checkWinner)
-
-})
-
-
-const pScore = document.querySelector('#playerScore')
-function checkPScore() {
-    if (playerWin > 0) {
-        pScore.textContent = `Player Score: ${playerWin}`;
-    } else return
-}
-
-const cScore = document.querySelector('#computerScore')
-function checkCScore() {
-    if (computerWin > 0) {
-        cScore.textContent = `Computer Score: ${computerWin}`;
-    } else return
-}
-
-//play one round
-    function playRound() {
-        let computerSelection = computerPlay();
-        if ((playerSelection == 'rock' && computerSelection == scissors) || 
-        (playerSelection == 'paper' && computerSelection == rock) ||
-        (playerSelection == 'scissors' && computerSelection == paper)) {
-            console.log('Player win the round')
-            playerWin = playerWin + 1;
-    } else if ((playerSelection == 'rock' && computerSelection == paper) ||
-        (playerSelection == 'paper' && computerSelection == scissors) ||
-        (playerSelection == 'scissors' && computerSelection == rock)) {
-            console.log('Computer win the round')
-            computerWin = computerWin + 1;
-        } else if (playerSelection == computerSelection) {
-            console.log('Tied');
-            tie = tie + 1;
-        }
-    }
 
 function computerPlay() {
     let random = Math.floor(Math.random()*3);
@@ -76,3 +15,86 @@ function computerPlay() {
         return scissors
     }
 }
+
+
+const pScore = document.querySelector('.playerScore');
+const cScore = document.querySelector('.computerScore')
+function checkScore() {
+    if (playerWin > 0 || computerWin > 0) {
+        pScore.textContent = `Player Score: ${playerWin}`
+        cScore.textContent = `Computer Score: ${computerWin}`
+    } else return;
+}
+
+
+function checkWinner() {
+    for (i = 0; i < 6; i++) {
+        if (playerWin == 5) {
+        conclusion.textContent = 'Hip Hip Hooray, You WON!'
+        playAgain()
+        disableChoices()
+        } else if (computerWin == 5) {
+        conclusion.textContent = 'Oh no, you lose'
+        playAgain()
+        disableChoices()
+        }
+    } 
+}
+
+function playAgain() {
+    const playAgain = document.querySelector('.playAgain')
+    playAgain.textContent = 'Play Again'
+    const buttonStyle = document.querySelector('.playAgain').style
+    buttonStyle.backgroundColor ='red';
+    buttonStyle.padding = '20px 30px 20px 30px'
+    playAgain.addEventListener('click', () => {
+        window.location.reload();
+    })
+}
+
+function disableChoices() {
+    choices.forEach((img) => {
+        img.remove()
+    })
+}
+
+const pChoice = document.querySelector('.playerChoice')
+const cChoice = document.querySelector('.computerChoice')
+const choices = document.querySelectorAll('img')
+choices.forEach((img) => {
+    img.addEventListener('click', function() {
+        playerSelection = img.className;
+        playRound()
+        pChoice.textContent = playerSelection
+        checkScore()
+        checkWinner()
+    })
+})
+
+
+
+const showResult = document.querySelector('#final')
+function playRound() {
+    let computerSelection = computerPlay()
+    cChoice.textContent = computerSelection
+    if ((playerSelection == 'rock' && computerSelection == scissors) || 
+        (playerSelection == 'paper' && computerSelection == rock) ||
+        (playerSelection == 'scissors' && computerSelection == paper)) {
+            showResult.textContent = 'You win, ' + playerSelection + ' beats ' + computerSelection
+            playerWin = playerWin + 1;
+            return
+    } else if 
+        ((playerSelection == 'rock' && computerSelection == paper) ||
+        (playerSelection == 'paper' && computerSelection == scissors) ||
+        (playerSelection == 'scissors' && computerSelection == rock)) {
+            showResult.textContent = 'You lose, ' + computerSelection + ' beats ' + playerSelection
+            computerWin = computerWin + 1;
+            return
+    } else if 
+        (playerSelection == computerSelection) {
+            showResult.textContent = 'It\'s a draw';
+            return
+    }
+}
+
+
