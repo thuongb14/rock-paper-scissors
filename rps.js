@@ -24,8 +24,6 @@ function checkScore() {
     }
 }
 
-<<<<<<< HEAD
-
 function checkWinner() {
     for (i = 0; i < 6; i++) {
         if (playerWin == 5) {
