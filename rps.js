@@ -4,7 +4,6 @@ let scissors = 'scissors';
 let playerWin = 0;
 let computerWin = 0;
 
-
 function computerPlay() {
     let random = Math.floor(Math.random()*3);
     if (random == 0) {
@@ -12,17 +11,16 @@ function computerPlay() {
     } else if (random == 1) {
         return paper;
     } else if (random == 2) {
-        return scissors
+        return scissors;
     }
 }
-
 
 const pScore = document.querySelector('.playerScore');
 const cScore = document.querySelector('.computerScore')
 function checkScore() {
     if (playerWin > 0 || computerWin > 0) {
-        pScore.textContent = `Player Score: ${playerWin}`
-        cScore.textContent = `Computer Score: ${computerWin}`
+        pScore.textContent = `Player Score: ${playerWin}`;
+        cScore.textContent = `Computer Score: ${computerWin}`;
     } else return;
 }
 
@@ -30,25 +28,26 @@ function checkScore() {
 function checkWinner() {
     for (i = 0; i < 6; i++) {
         if (playerWin == 5) {
-        conclusion.textContent = 'Hip Hip Hooray, You WON!'
-        playAgain()
-        disableChoices()
+            conclusion.textContent = 'Hip Hip Hooray, You WON!';
+            playAgain()
+            disableChoices()
         } else if (computerWin == 5) {
-        conclusion.textContent = 'Oh no, you lose'
-        playAgain()
-        disableChoices()
+            conclusion.textContent = 'Oh no, you lose';
+            playAgain()
+            disableChoices()
         }
     } 
 }
 
 function playAgain() {
     const playAgain = document.querySelector('.playAgain')
-    playAgain.textContent = 'Play Again'
+        playAgain.textContent = 'Play Again'
     const buttonStyle = document.querySelector('.playAgain').style
-    buttonStyle.backgroundColor ='red';
-    buttonStyle.padding = '20px 30px 20px 30px'
-    playAgain.addEventListener('click', () => {
-        window.location.reload();
+        buttonStyle.backgroundColor ='red';
+        buttonStyle.padding = '20px 30px 20px 30px';
+        
+        playAgain.addEventListener('click', () => {
+            window.location.reload();
     })
 }
 
@@ -60,18 +59,17 @@ function disableChoices() {
 
 const pChoice = document.querySelector('.playerChoice')
 const cChoice = document.querySelector('.computerChoice')
+
 const choices = document.querySelectorAll('img')
 choices.forEach((img) => {
     img.addEventListener('click', function() {
         playerSelection = img.className;
         playRound()
-        pChoice.textContent = playerSelection
+        pChoice.textContent = playerSelection;
         checkScore()
         checkWinner()
     })
 })
-
-
 
 const showResult = document.querySelector('#final')
 function playRound() {
@@ -82,18 +80,18 @@ function playRound() {
         (playerSelection == 'scissors' && computerSelection == paper)) {
             showResult.textContent = 'You win, ' + playerSelection + ' beats ' + computerSelection
             playerWin = playerWin + 1;
-            return
+            return;
     } else if 
         ((playerSelection == 'rock' && computerSelection == paper) ||
         (playerSelection == 'paper' && computerSelection == scissors) ||
         (playerSelection == 'scissors' && computerSelection == rock)) {
             showResult.textContent = 'You lose, ' + computerSelection + ' beats ' + playerSelection
             computerWin = computerWin + 1;
-            return
+            return;
     } else if 
         (playerSelection == computerSelection) {
             showResult.textContent = 'It\'s a draw';
-            return
+            return;
     }
 }
 
