@@ -5,12 +5,12 @@ let playerWin = 0;
 let computerWin = 0;
 
 function computerPlay() {
-    let random = Math.floor(Math.random()*3);
-    if (random == 0) {
+    let choice = Math.floor(Math.random()*3);
+    if (choice == 0) {
         return rock;
-    } else if (random == 1) {
+    } else if (choice == 1) {
         return paper;
-    } else if (random == 2) {
+    } else if (choice == 2) {
         return scissors;
     }
 }
@@ -21,7 +21,7 @@ function checkScore() {
     if (playerWin > 0 || computerWin > 0) {
         pScore.textContent = `Player Score: ${playerWin}`;
         cScore.textContent = `Computer Score: ${computerWin}`;
-    } else return;
+    }
 }
 
 
@@ -36,7 +36,7 @@ function checkWinner() {
             playAgain()
             disableChoices()
         }
-    } 
+    }
 }
 
 function playAgain() {
@@ -58,7 +58,6 @@ function disableChoices() {
 }
 
 const pChoice = document.querySelector('.playerChoice')
-const cChoice = document.querySelector('.computerChoice')
 
 const choices = document.querySelectorAll('img')
 choices.forEach((img) => {
@@ -71,7 +70,9 @@ choices.forEach((img) => {
     })
 })
 
+const cChoice = document.querySelector('.computerChoice')
 const showResult = document.querySelector('#final')
+
 function playRound() {
     let computerSelection = computerPlay()
     cChoice.textContent = computerSelection
