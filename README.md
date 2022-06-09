@@ -21,7 +21,4 @@ To make a simple implementation of grade-school classic “rock paper scissors�
 <li> Github </li>
 
 ## Outcomes ✅: 
-This is my first Javascript programm written from scratch. 
-
-## What I learned: 
-
+This is my first Javascript program buit from scratch. The game is to play with the computer that will randomly generate 'rock', 'paper' or 'scissors' and compare with our choice to give the result whether it is 'Player Win', 'Computer Win' or 'Draw' for each round. Player's score and computer's score is stored and pushed to dipslay. The winner is decided after whether player or computer hits 5 points.
