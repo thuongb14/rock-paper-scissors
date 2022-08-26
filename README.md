@@ -57,6 +57,3 @@ function checkWinner() {
 ```
 ## Final Thoughts:
 It took me 1 week to do both part I and part II of the game - making the game interactive and making the graphical user interface. I have learnt a lot in compared with just doing basic javascript exercises, it requires me to think programatically and how to break down the project into smaller problems and solve one by one. 
-
-> This is Lizzy, into day 33th of coding.
-
